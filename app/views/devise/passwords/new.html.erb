@@ -1,0 +1,19 @@
+<h1 class="special-title">Mot de passe<br>oublié</h1>
+
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+<div class="card-forgot_password">
+  <div class="card-body-forgot_password">
+    <div class="text-center field-forgot_password">
+     <label for="email" style="display: block" class="form-label">E-mail</label>
+     <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-input rounded-3" %>
+    </div>
+    <br>
+
+  <div class="actions text-center mt-3">
+    <%= f.submit "Réinitialiser le mot de passe", class: 'btn-out' %>
+  </div>
+<% end %>
+  </div>
+</div>

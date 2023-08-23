@@ -1,0 +1,33 @@
+<section class="banner">
+  <%= render 'events/banner' %>
+  <% if user_signed_in? && current_user.pseudo ==  nil%>
+    <div class="container-pseudo d-flex flex-column align-items-center p-1">
+      <p class="m-0 text-bolder fs-6"><strong>Bienvenue parmi nous, il est temps de choisir ton pseudo</strong></p>
+      <%= form_for(current_user, url: new_pseudo_path, method: :patch, html: { class: 'd-flex align-items-center flex-column flex-sm-row' }) do |f| %>
+          <div class="field mx-4">
+            <%= f.label :mon_pseudo, class: 'txt-grey' %>
+            <%= f.text_field :pseudo, class: 'rounded-2' %>
+          </div>   
+        <div class="actions my-2">
+            <%= f.submit "Mettre à jour le pseudo", class: 'btn-out2' %>
+        </div>
+      <% end %>
+    <% end %>
+    <% if user_signed_in? && current_user.pseudo !=  nil%>
+      <div style="text-align: center">
+        <h3 class="pseudo_title mt-5">Bienvenue à toi <%= current_user.pseudo %> </h3>
+      </div>
+    </div>
+  <% end %>
+</section>
+
+<section class="d-flex flex-column justify-content-center align-items-center py-5">
+  <%= render 'events/presentation'%>
+</section>      
+<section class="d-flex flex-column justify-content-center align-items-center py-5">
+  <%= render 'events/carrousel' %>
+</section>
+
+<section class="d-flex flex-column justify-content-center align-items-center py-5">
+  <%= render 'events/list_event' %>
+</section>
